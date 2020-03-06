@@ -7,10 +7,13 @@ verify_ssl = true
 editable = true
 path = '.'
 
+[packages.importlib_metadata]
+markers = "python_version < '3.8.0'"
+
 [packages]
-torch = "==1.1.0"
+torch = "==1.4.0"
 rainy = { editable = true, path = '../Rainy' }
-# rainy = "==0.3.0"
+# rainy = "==0.6.0"
 
 [dev-packages]
-pytest = "==3.10.1"
+pytest = "==5.2.4"
