@@ -1,12 +1,13 @@
-from acvp import model
-import gym
-from rainy.utils import Device
 import torch
 
+import gym
+from acvp import models
+from rainy.utils import Device
 
-def test_model_for_atari() -> None:
+
+def test_ffmodel_for_atari() -> None:
     atari = gym.make("BreakoutNoFrameskip-v0")
-    acvp_netfn = model.prepare_netfn()
+    acvp_netfn = models.prepare_ff()
     d = Device()
     acvp_net = acvp_netfn((3, 210, 160), 4, d)
     states, actions = [], []

@@ -11,7 +11,7 @@ from rainy.net.prelude import NetFn
 from rainy.utils import Device
 
 
-class AcvpNet(nn.Module):
+class FFAcvpNet(nn.Module):
     def __init__(
         self,
         input_dim: Sequence[int],
@@ -81,7 +81,7 @@ class AcvpNet(nn.Module):
         return x
 
 
-def prepare_netfn(
+def prepare_ff(
     conv_channels: List[int] = [64, 128, 128, 128],
     encoder_args: List[tuple] = [(8, 2, (0, 1)), (6, 2, 1), (6, 2, 1), (4, 2)],
     decoder_args: List[tuple] = [(4, 2), (6, 2, 1), (6, 2, 1), (8, 2, (0, 1))],
@@ -90,8 +90,8 @@ def prepare_netfn(
 ) -> NetFn:
     def _net(
         state_dim: Tuple[int, int, int], action_dim: int, device: Device
-    ) -> AcvpNet:
-        return AcvpNet(
+    ) -> FFAcvpNet:
+        return FFAcvpNet(
             state_dim,
             action_dim,
             hidden_dim,
